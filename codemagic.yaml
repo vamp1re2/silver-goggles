@@ -1,0 +1,13 @@
+workflows:
+  android-workflow:
+    name: Android build
+    max_build_duration: 60
+    environment:
+      flutter: false   # keep false for non-Flutter project
+    scripts:
+      - name: Clean project
+        script: ./gradlew clean
+      - name: Build APK
+        script: ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/**/*.apk
