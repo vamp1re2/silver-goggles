@@ -1,0 +1,16 @@
+workflows:
+  android-workflow:
+    name: Android build
+    max_build_duration: 60
+    environment:
+      vars:
+        ANDROID_HOME: /opt/android/sdk
+      flutter: false   # set to true only if it's a Flutter project
+      xcode: false
+    scripts:
+      - name: Clean project
+        script: ./gradlew clean
+      - name: Build APK
+        script: ./gradlew assembleDebug
+    artifacts:
+      - build/app/outputs/**/*.apk
